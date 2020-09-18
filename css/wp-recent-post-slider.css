@@ -1,51 +1,89 @@
-#map {
-    height: 800px;
-    width: 100%;
-    margin: 0;
-    padding: 0
+
+.rps-wrapper{
+width:100%;
+padding-top: 20px;
+text-align:center;
 }
 
-.leaflet-control-scale-line {
-    background: #f4f4f4;
+.rps-carousel{
+    width:95%;
+    margin:0px auto;
+    min-width: 300px;
 }
 
-.layerIcon {
-    width: 14px;
-    height: 14px;
+.slick-slide{
+margin:10px;
 }
 
-#map10_img {
-    display: none;
-}
-
-.marker-cluster div {
-    background-color: rgb(241, 25, 10);
-}
-
-.marker-cluster {
-    background-color: rgba(226, 140, 140, 0.6);
-}
-
-.leaflet-popup-content {
-    margin-top: 12px;
-    margin-right: 8px;
-    margin-bottom: 6px;
-    margin-left: 10px;
-    max-width: 250px;
-}
-
-.leaflet-popup-content img {
+.slick-slide img{
+    width:100%;
+    position: relative;
+    object-fit:cover;
+    border: 0px solid #fff;
     margin-left: auto;
     margin-right: auto;
+    border-bottom: 3px solid red;
+    border-radius: 4px 4px 0 0;
     margin-top: 0px;
-    width : 100px;
-    height: 100px;
-    float: right;
+    max-height: 200px;
 }
-.leaflet-container {
-    background: #b9d3dc; /* OpenStreetMap */
+
+.rps-title {
+    overflow-wrap: break-word;
+    margin: 10px;
+    font-size: 16px;
+    text-align:left;
+    margin: 0 5px 10px 5px;
 }
-.leaflet-container a {
-    color: black;
-    text-decoration: none;
+
+.rps-category {
+      color:green;
+      /*font-size:10px;*/
+      margin:10px 5px 0 5px;
+      position:left;
+      text-align:left;
+      }
+      
+.rps-blog-cart {
+      background: white;
+      position: relative;
+      box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+      justify-content: space-between;
+      min-width:150px;
+      border-radius: 4px;
+      }
+  
+.slick-track {
+    display: flex !important;
+}
+
+.slick-arrow {
+    color:black;
+}
+
+.slick-slide {
+      height: inherit !important;
+}
+.slick-prev:before, .slick-next:before {
+    color:black;
+    opacity: 1;
+}	
+
+.rps-date {
+      position: relative;
+      margin: 10px 5px 10px 0;
+      text-align:right;
+      color:grey;
+}
+
+.rps-excerpt {
+      text-align:left;
+      color: grey;
+      margin: 20px 5px 40px 5px;
+      }
+
+.rps-button {
+    position: absolute;
+    bottom: 2px;
+    left: 26%;
 }
