@@ -10,7 +10,7 @@
  * Plugin Name:       wp-recent-post-slider
  * Plugin URI:        www.mvb1.de
  * Description:       Anzeige der letzten Posts in einem Slider mit Shortcode: [recent-post-slider numberposts="5"]
- * Version:           0.1.0
+ * Version:           0.3.0
  * Author:            Martin von Berg
  * Author URI:        www.mvb1.de
  * License:           GPL-2.0+
@@ -48,8 +48,8 @@ function show_recent_posts($attr)
 	$string .= '<div class="rps-wrapper">';
 	$string .= '<div class="rps-carousel">';
 	
-	$min_width = 300;
-	$max_width = 600;
+	$min_width = 200;
+	$max_width = 700;
 
 	$imgsizes = "(max-width: 480px) 100vw, (max-width: 700px) 50vw, (max-width: 1024px) 33vw, 350px"; //abgeleitet aus dem javascript für slick
 
