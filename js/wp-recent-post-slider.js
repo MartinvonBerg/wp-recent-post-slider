@@ -1,12 +1,12 @@
 "use strict";
 
-(function (window, document, undefined) {
+(function (document, undefined) {
   
     jQuery(document).ready(function(){
         jQuery('.rps-carousel').slick({
             slidesToShow: 4,
             slidesToScroll: 3,
-            dots:true,
+            dots:false,
             centerMode: false,
             infinite: false,
             responsive: [
@@ -31,12 +31,9 @@
                   slidesToScroll: 1
                 }
               }
-              // You can unslick at a given breakpoint now by adding:
-              // settings: "unslick"
-              // instead of a settings object
             ]
         });
       });
      
     
-})(window, document);
+})(document);
