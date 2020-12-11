@@ -1,0 +1,7 @@
+*.png
+*.svg
+*.jpg
+*.gif
+*.map
+.vscode/launch.json
+.gitignore
