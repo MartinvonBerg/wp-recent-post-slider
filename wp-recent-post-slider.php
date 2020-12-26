@@ -43,34 +43,38 @@ function show_recent_posts($attr)
 	$upload_dir    = wp_get_upload_dir();
 
 	$lenexcerpt = 300;
+	$lentitle = 80;
 	
 	foreach ($custom_posts as $post) { 
-			$title = substr($post->post_title,0,80); // Länge des Titels beschränken, Anzahl Zeichen
+			$title = substr($post->post_title,0, $lentitle); // Länge des Titels beschränken, Anzahl Zeichen
 			$featimage = get_the_post_thumbnail_url($post->ID, $size='thumbnail'); 
 			$featured_image_id = get_post_thumbnail_id( $post->ID );
 			$image_meta = wp_get_attachment_metadata( $featured_image_id );
-			$my_srcset = '';
-
 			$content = $post->post_content;
+			$postlink = get_permalink($post->ID); // guid vorhanden, aber kein schöner permalink
+			$category = get_the_category($post->ID)[0]->cat_name;
+			$date = get_the_date($dateformat,$post->ID); // $post->post_date
 			
+			// Excerpt nur aus den Absätzen <p> herstellen! Schlüsselwörter entfernen, dürfen dann im Text nicht vorkommen
+			// Absätze mit [shortcodes] werden ignoriert.
+			// der html-code muss mit zeilenumbrüchen formatiert sein, sonst geht das nicht!
 			$p = '';
-			foreach(preg_split("/((\r?\n)|(\r\n?))/", $content) as $line){ // der html-code muss mit zeilenumbrüchen formatiert sein, sonst geht das nicht!
-				// do stuff with $line
-				$sub = substr($line,0,3);
-				$isshortcode = strpos($line,'[');
+			foreach(preg_split("/((\r?\n)|(\r\n?))/", $content) as $line){ 
+				$sub = substr($line,0,3); // html-tag aus der zeile ausschneiden
+				$isshortcode = strpos($line,'['); 
 				if (($sub == '<p>') and ($isshortcode == false)) {
 					$p .= substr($line,3);
 				}
 				$p = str_replace('</p>','',$p);
-				if (strlen($p) >= $lenexcerpt) {
-					$p = substr($p,0, $lenexcerpt);
-					break;
-				}
 			} 
-			
-			//echo $p;
-			//echo '</br>';
+			$p = str_replace('Kurzbeschreibung:','',$p);
+			$p = str_replace('Tourenbeschreibung:','',$p);
+			$p = strip_tags($p); // html-Tags entfernen
+			$p = substr($p,0, $lenexcerpt); // erst jetzt auf die richtige länge kürszen
+			$excerpt = $p . '...';
 
+			// special imgsrcset für slick erstellen, dass Standard srcset von WP kann nicht genutzt werden!
+			$my_srcset = '';
 			if ( is_array($image_meta) ) {
 				// Retrieve the uploads sub-directory from the full size image.
 				$dirname = _wp_get_attachment_relative_path( $image_meta['file'] );
@@ -106,32 +110,15 @@ function show_recent_posts($attr)
 				}
 			}
 
-			$postlink = get_permalink($post->ID); // guid vorhanden, aber kein schöner permalink
-			$category = get_the_category($post->ID)[0]->cat_name;
-			$date = get_the_date($dateformat,$post->ID); // $post->post_date
-			//$excerpt = get_the_excerpt($post->ID); // löschen
-			$excerpt = $p . '...';
-			/**
-			if (strpos($excerpt, 'urzbeschr') !== false) { 
-				$excerpt = ltrim(strstr($excerpt," "));
-			}
-
-			if (strpos($excerpt, '<a') !== false) { 
-				$posalttag = strpos($excerpt,"<a");
-				$excerpt = substr($excerpt,0,$posalttag);
-			}
-			*/
-			
 			$string .= '<div class ="rps-blog-cart">';
 			$string .= '<a href = "' . $postlink . '">';
-			$string .= '<img loading="lazy" ' . $srcset . ' src="'. $featimage .'" alt="' . $category . ' '. $title .'">';
+			$string .= '<img loading="lazy" ' . $my_srcset . ' src="'. $featimage .'" alt="' . $category . ' '. $title .'">';
 			$string .= '<p class="rps-category">' . $category . '</p>';
 			$string .= '<p class="rps-date">' . $date . '</p>';
 			$string .= '<h4 class="rps-title">' . $title . '</h4>';
 			$string .= '<p class="rps-excerpt">' . $excerpt . '</p>';
 			$string .= '<button class="rps-button">Weiterlesen...</button></a>';
 			$string .= '</div>';
-		
 	}
 	
 	$string  .= '</div></div>';
@@ -141,6 +128,7 @@ function show_recent_posts($attr)
 
 require_once __DIR__ . '/wp-recent-post-slider-enq.php';
 
+// Vergleichsfunktion
 function cmp($a, $b)
 	{
 		if ($a['width'] == $b['width']) {
