@@ -20,6 +20,5 @@ function wp_recent_post_scripts()
     //wp_enqueue_script('wp_recent_post_script1', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js',array('jquery'), '1.10.2', true);
     wp_enqueue_script('wp_recent_post_script1', $plugin_url . 'js/slick.min.js',array('jquery'), '1.10.2', true);
     wp_enqueue_script('wp_recent_post_script2', $plugin_url . 'js/wp-recent-post-slider.js', array('jquery'), '1.10.2', true);
-   
   }
-} // (.*?).min.css (.*?).min.js  /smrtzl/plugins/wp-recent-post-slider/(.*?).js  
+}
