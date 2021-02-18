@@ -3,19 +3,22 @@
 /**
  *
  * @link              www.mvb1.de
- * @since             1.0.0
+ * @since             5.3.0
  * @package           wp-recent-post-slider
  *
  * @wordpress-plugin
  * Plugin Name:       wp-recent-post-slider
  * Plugin URI:        www.mvb1.de
  * Description:       Anzeige der letzten Posts in einem Slider mit Shortcode: [recent-post-slider numberposts="5"]
- * Version:           0.4.0
+ * Version:           0.5.0
  * Author:            Martin von Berg
  * Author URI:        www.mvb1.de
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * PHP-Version:		  5.4+, tested with PHP 8.0
  */
+
+ // namespace definition fehlt hier!
 
 defined('ABSPATH') or die('Are you ok?');
 
