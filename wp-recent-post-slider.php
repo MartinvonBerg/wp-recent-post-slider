@@ -139,7 +139,7 @@ function show_recent_posts($attr)
 		
 		$string  .= '</div></div>';
 		// end generation of html output: write the html-output in $string now as get_transient
-		\set_transient('post_map_html_output', $string, $transient_duration);
+		\set_transient('recentpostslider_html_output', $string, $transient_duration);
 	}
 
 	return $string;
