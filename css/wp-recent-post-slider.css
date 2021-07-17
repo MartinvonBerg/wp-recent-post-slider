@@ -40,7 +40,7 @@ margin:10px;
       color:green;
       /*font-size:10px;*/
       margin:10px 5px 0 5px;
-      position:left;
+      /*position:left;*/
       text-align:left;
       }
       
@@ -85,5 +85,10 @@ margin:10px;
 .rps-button {
     position: absolute;
     bottom: 2px;
-    left: 26%;
+    left: 20%;
+    margin-bottom: 5px;
+    color: white;
+    background: black;
+    padding-left: 10px;
+    padding-right: 10px;
 }

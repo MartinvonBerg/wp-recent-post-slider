@@ -10,7 +10,7 @@
  * Plugin Name:       wp-recent-post-slider
  * Plugin URI:        www.mvb1.de
  * Description:       Anzeige der letzten Posts in einem Slider mit Shortcode: [recent-post-slider numberposts="5"]
- * Version:           0.5.0
+ * Version:           0.6.0
  * Author:            Martin von Berg
  * Author URI:        www.mvb1.de
  * License:           GPL-2.0+
@@ -26,6 +26,8 @@ add_shortcode('recent-post-slider', '\mvbplugins\recentpostslider\show_recent_po
 
 function show_recent_posts($attr)
 {
+	require_once __DIR__ . '/wp-recent-post-slider-enq.php';
+	
 	// check the transient set time and delete transient if post was published during that time
 	$transient_duration = \WEEK_IN_SECONDS;
 	$last_post_date = \get_lastpostdate('server', 'post'); // "2020-12-24 13:16:03.000000"
@@ -127,13 +129,13 @@ function show_recent_posts($attr)
 				}
 
 				$string .= '<div class ="rps-blog-cart">';
-				$string .= '<a href = "' . $postlink . '">';
+				$string .= '<a href = "' . $postlink . '" target="_blank">';
 				$string .= '<img loading="lazy" ' . $my_srcset . ' src="'. $featimage .'" alt="' . $category . ' '. $title .'">';
 				$string .= '<p class="rps-category">' . $category . '</p>';
 				$string .= '<p class="rps-date">' . $date . '</p>';
-				$string .= '<h4 class="rps-title">' . $title . '</h4>';
+				$string .= '<h3 class="rps-title">' . $title . '</h3>';
 				$string .= '<p class="rps-excerpt">' . $excerpt . '</p>';
-				$string .= '<button class="rps-button">Weiterlesen...</button></a>';
+				$string .= '<p class="rps-button">Weiterlesen...</p></a>';
 				$string .= '</div>';
 		}
 		
@@ -144,8 +146,6 @@ function show_recent_posts($attr)
 
 	return $string;
 }
-
-require_once __DIR__ . '/wp-recent-post-slider-enq.php';
 
 /**
  * Vergleichsfunktion für 'width' in zwei Arrays
@@ -160,4 +160,4 @@ function cmp($a, $b) {
 	}
 	return ($a['width'] < $b['width']) ? -1 : 1;
 		
-	}
+}
