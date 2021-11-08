@@ -129,7 +129,7 @@ function show_recent_posts($attr)
 				}
 
 				$string .= '<div class ="rps-blog-cart">';
-				$string .= '<a href = "' . $postlink . '" target="_blank">';
+				$string .= '<a href = "' . $postlink . '">';
 				$string .= '<img loading="lazy" ' . $my_srcset . ' src="'. $featimage .'" alt="' . $category . ' '. $title .'">';
 				$string .= '<p class="rps-category">' . $category . '</p>';
 				$string .= '<p class="rps-date">' . $date . '</p>';
