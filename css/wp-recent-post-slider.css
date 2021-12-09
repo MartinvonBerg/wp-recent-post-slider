@@ -38,7 +38,7 @@ margin:10px;
     margin: 10px;
     font-size: 16px;
     text-align:left;
-    margin: 0 5px 10px 5px;
+    margin: 0 5px 10px 5px !important;
 }
 
 .rps-category {
@@ -56,6 +56,7 @@ margin:10px;
       justify-content: space-between;
       min-width:150px;
       border-radius: 4px;
+      max-width: 300px;
       }
   
 .slick-track {
@@ -83,15 +84,15 @@ margin:10px;
 
 .rps-date {
       position: relative;
-      margin: 10px 5px 10px 0;
+      margin: 10px 5px 10px 0 !important;
       text-align:right;
-      color:grey;
+      color:black;
 }
 
 .rps-excerpt {
       text-align:left;
-      color: grey;
-      margin: 20px 5px 40px 5px;
+      color:black;
+      margin: 20px 5px 40px 5px !important;
       }
 
 .rps-button {
