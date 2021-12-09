@@ -54,8 +54,7 @@ Shortcode: [mapview] Fertig. Keine Optionen!
     - Das Design wird direkt im CSS eingestellt. Kartenhöhe nicht vergessen!
 
     1.5 TODO
-    JS zumindest so flexibel gestalten, dass sich die MarkerCluster an den Kategorien ausrichten. Die Icons müssen dann wie die Kategorie heissen.
-    Dann wird das JS durch PHP und den HTML-Code gesteuert. 
+    ---
 
 == Installation ==
 
@@ -70,6 +69,9 @@ Shortcode: [mapview] Fertig. Keine Optionen!
 There are no FAQ just yet.
 
 == Changelog ==
+
+= 0.6.1 =
+*   09.12.2021 : JS update to reduce Google page speed CLS problem. Updates to fit for responsive theme from cyperchimps.
 
 = 0.3.0 =
 *   First release: 1.04.2020
