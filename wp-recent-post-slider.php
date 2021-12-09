@@ -65,7 +65,7 @@ function show_recent_posts($attr)
 		
 		foreach ($custom_posts as $post) { 
 				$title = substr($post->post_title,0, $lentitle); // Länge des Titels beschränken, Anzahl Zeichen
-				$featimage = get_the_post_thumbnail_url($post->ID, $size='thumbnail'); 
+				$featimage = get_the_post_thumbnail_url($post->ID, $size='medium'); 
 				$featured_image_id = get_post_thumbnail_id( $post->ID );
 				$image_meta = wp_get_attachment_metadata( $featured_image_id );
 				$content = $post->post_content;
